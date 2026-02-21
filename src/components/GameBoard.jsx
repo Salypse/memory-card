@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { Card } from "./Card";
+import { randomizeDeck } from "../utilities/randomizeDeck";
 
 export function GameBoard(props) {
    const [deck, setDeck] = useState([]);
@@ -25,7 +26,7 @@ export function GameBoard(props) {
                console.error("Error:", error);
             }
          }
-         setDeck(cards);
+         setDeck(randomizeDeck(cards));
       }
 
       fetchCardData();
