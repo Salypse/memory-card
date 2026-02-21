@@ -5,6 +5,7 @@ import { randomizeDeck } from "../utilities/randomizeDeck";
 
 export function GameBoard(props) {
    const [deck, setDeck] = useState([]);
+   const [clickedCards, setClickedCards] = useState([]);
 
    useEffect(() => {
       async function fetchCardData() {
@@ -32,11 +33,23 @@ export function GameBoard(props) {
       fetchCardData();
    }, [props.cardAmount]);
 
+   function handleScore(id) {
+      if (clickedCards.includes(id)) {
+         //Game reset
+         setClickedCards([]);
+         props.setScore(0);
+      } else {
+         setClickedCards((prev) => [...prev, id]);
+         props.setScore((prev) => prev + 1);
+      }
+      setDeck((prev) => randomizeDeck(prev));
+   }
+
    return (
       <ul className="game-board">
          {deck.map((data) => (
             <li key={data.id}>
-               <Card data={data}></Card>
+               <Card data={data} handleScore={handleScore}></Card>
             </li>
          ))}
       </ul>
