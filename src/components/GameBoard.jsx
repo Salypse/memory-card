@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { Card } from "./Card";
 import { randomizeDeck } from "../utilities/randomizeDeck";
@@ -7,11 +7,13 @@ export function GameBoard(props) {
    const [deck, setDeck] = useState([]);
    const [clickedCards, setClickedCards] = useState([]);
 
+   const cardAmount = useRef(props.cardAmount);
+
    useEffect(() => {
       async function fetchCardData() {
          const cards = [];
 
-         for (let i = 1; i <= props.cardAmount; i++) {
+         for (let i = 1; i <= cardAmount.current; i++) {
             try {
                const response = await fetch(
                   `https://dragonball-api.com/api/characters/${i}`,
@@ -31,7 +33,7 @@ export function GameBoard(props) {
       }
 
       fetchCardData();
-   }, [props.cardAmount]);
+   }, [cardAmount]);
 
    function handleScore(id) {
       if (clickedCards.includes(id)) {
@@ -46,12 +48,14 @@ export function GameBoard(props) {
    }
 
    return (
-      <ul className="game-board">
-         {deck.map((data) => (
-            <li key={data.id}>
-               <Card data={data} handleScore={handleScore}></Card>
-            </li>
-         ))}
-      </ul>
+      <>
+         <ul className="game-board">
+            {deck.map((data) => (
+               <li key={data.id}>
+                  <Card data={data} handleScore={handleScore}></Card>
+               </li>
+            ))}
+         </ul>
+      </>
    );
 }

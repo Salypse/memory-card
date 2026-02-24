@@ -4,9 +4,11 @@ import { GameBoard } from "./GameBoard";
 export function ChooseDifficulty() {
    const [cardAmount, setCardAmount] = useState(0);
    const [score, setScore] = useState(0);
+   const [startGame, setStartGame] = useState(false);
 
    function toggleButtons() {
       const difficultyButtons = document.querySelector(".difficulty-selection");
+      setStartGame(true);
       difficultyButtons.remove();
    }
 
@@ -24,7 +26,13 @@ export function ChooseDifficulty() {
                Hard
             </button>
          </section>
-         <GameBoard cardAmount={cardAmount} setScore={setScore}></GameBoard>
+         {startGame && (
+            <GameBoard
+               cardAmount={cardAmount}
+               score={score}
+               setScore={setScore}
+            ></GameBoard>
+         )}
       </>
    );
 }
