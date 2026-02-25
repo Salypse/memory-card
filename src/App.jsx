@@ -1,11 +1,11 @@
 import "./App.css";
 
-import { ChooseDifficulty } from "./components/ChooseDifficulty";
+import { StartGame } from "./components/StartGame";
 
 function App() {
    return (
       <>
-         <ChooseDifficulty></ChooseDifficulty>
+         <StartGame></StartGame>
       </>
    );
 }

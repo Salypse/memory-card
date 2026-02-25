@@ -6,6 +6,7 @@ import { randomizeDeck } from "../utilities/randomizeDeck";
 export function GameBoard(props) {
    const [deck, setDeck] = useState([]);
    const [clickedCards, setClickedCards] = useState([]);
+   const [isWon, setIsWon] = useState(false);
 
    const cardAmount = useRef(props.cardAmount);
 
@@ -30,14 +31,21 @@ export function GameBoard(props) {
             }
          }
          setDeck(randomizeDeck(cards));
+         setIsWon(false);
       }
 
       fetchCardData();
    }, [cardAmount]);
 
+   useEffect(() => {
+      if (props.score >= cardAmount.current) {
+         setIsWon(true);
+      }
+   }, [props.score]);
+
    function handleScore(id) {
       if (clickedCards.includes(id)) {
-         //Game reset
+         //Game reset on failure
          setClickedCards([]);
          props.setScore(0);
       } else {
@@ -47,15 +55,32 @@ export function GameBoard(props) {
       setDeck((prev) => randomizeDeck(prev));
    }
 
+   //Used when user completes difficulty and wants to try it again
+   function resetBoard() {
+      setClickedCards([]);
+      setIsWon(false);
+      props.setScore(0);
+   }
+
    return (
       <>
-         <ul className="game-board">
-            {deck.map((data) => (
-               <li key={data.id}>
-                  <Card data={data} handleScore={handleScore}></Card>
-               </li>
-            ))}
-         </ul>
+         {!isWon && (
+            <ul className="game-board">
+               {deck.map((data) => (
+                  <li key={data.id}>
+                     <Card data={data} handleScore={handleScore}></Card>
+                  </li>
+               ))}
+            </ul>
+         )}
+         {isWon && (
+            <div className="game-over">
+               <button onClick={() => resetBoard()}>Reset</button>{" "}
+               <button onClick={() => [props.toggleButtons(), resetBoard()]}>
+                  Menu
+               </button>
+            </div>
+         )}
       </>
    );
 }
