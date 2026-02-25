@@ -13,29 +13,30 @@ export function StartGame() {
    return (
       <>
          <p>Score: {score}</p>
+         <div className="content">
+            {!startGame && (
+               <section className="difficulty-selection">
+                  <button onClick={() => [toggleButtons(), setCardAmount(5)]}>
+                     Easy
+                  </button>
+                  <button onClick={() => [toggleButtons(), setCardAmount(10)]}>
+                     Medium
+                  </button>
+                  <button onClick={() => [toggleButtons(), setCardAmount(15)]}>
+                     Hard
+                  </button>
+               </section>
+            )}
 
-         {!startGame && (
-            <section className="difficulty-selection">
-               <button onClick={() => [toggleButtons(), setCardAmount(5)]}>
-                  Easy
-               </button>
-               <button onClick={() => [toggleButtons(), setCardAmount(10)]}>
-                  Medium
-               </button>
-               <button onClick={() => [toggleButtons(), setCardAmount(15)]}>
-                  Hard
-               </button>
-            </section>
-         )}
-
-         {startGame && (
-            <GameBoard
-               cardAmount={cardAmount}
-               score={score}
-               setScore={setScore}
-               toggleButtons={toggleButtons}
-            ></GameBoard>
-         )}
+            {startGame && (
+               <GameBoard
+                  cardAmount={cardAmount}
+                  score={score}
+                  setScore={setScore}
+                  toggleButtons={toggleButtons}
+               ></GameBoard>
+            )}
+         </div>
       </>
    );
 }
