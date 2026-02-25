@@ -9,5 +9,15 @@ li {
 }
 
 .content {
-   margin: 5vw 0;
+   margin-top: 5vw;
+   padding: 5vw 0;
+   min-height: 100vh;
+
+   background: url("./assets/images/background-narrow.png") no-repeat center
+      fixed;
+   background-size: cover;
+}
+
+.background-image {
+   width: 100vw;
 }
