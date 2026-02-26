@@ -23,7 +23,7 @@
    width: 100%;
    border: 2vw solid var(--dark-blue);
    border-radius: 5%;
-   background-color: rgba(0, 0, 0, 0.25);
+   background-color: rgba(0, 0, 0, 0.5);
    overflow: hidden;
 }
 
@@ -37,5 +37,5 @@
    padding: 1vw 0;
    border-top: 2vw solid var(--dark-blue);
    background-color: var(--orange);
-   font-size: clamp(1.5rem, 5vw, 2rem);
+   font-size: clamp(2rem, 5vw, 2.5rem);
 }
