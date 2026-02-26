@@ -1,0 +1,14 @@
+.button-section {
+   display: flex;
+   flex-direction: column;
+   align-self: center;
+   gap: 2vw;
+}
+
+.button-section button {
+   font-size: clamp(2.5rem, 5vw, 2.8rem);
+   padding: 1vw 2vw;
+   background-color: var(--orange);
+   border: 1vw solid var(--dark-blue);
+   border-radius: 5%;
+}

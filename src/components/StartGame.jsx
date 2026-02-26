@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { GameBoard } from "./GameBoard";
 
+import "../styles/Buttons.css";
+
 export function StartGame() {
    const [cardAmount, setCardAmount] = useState(0);
    const [score, setScore] = useState(0);
@@ -15,7 +17,7 @@ export function StartGame() {
          <p>Score: {score}</p>
          <div className="content">
             {!startGame && (
-               <section className="difficulty-selection">
+               <section className="difficulty-selection button-section">
                   <button onClick={() => [toggleButtons(), setCardAmount(5)]}>
                      Easy
                   </button>

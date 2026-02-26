@@ -75,7 +75,7 @@ export function GameBoard(props) {
             </ul>
          )}
          {isWon && (
-            <div className="game-over">
+            <div className="game-over button-section">
                <button onClick={() => resetBoard()}>Reset</button>{" "}
                <button onClick={() => [props.toggleButtons(), resetBoard()]}>
                   Menu
