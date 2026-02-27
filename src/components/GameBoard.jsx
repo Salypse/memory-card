@@ -5,11 +5,12 @@ import { Card } from "./Card";
 import { randomizeDeck } from "../utilities/randomizeDeck";
 
 export function GameBoard(props) {
+   const { score, setScore, setHighScore, toggleButtons } = props;
+   const cardAmount = useRef(props.cardAmount);
+
    const [deck, setDeck] = useState([]);
    const [clickedCards, setClickedCards] = useState([]);
    const [isWon, setIsWon] = useState(false);
-
-   const cardAmount = useRef(props.cardAmount);
 
    useEffect(() => {
       async function fetchCardData() {
@@ -39,19 +40,23 @@ export function GameBoard(props) {
    }, [cardAmount]);
 
    useEffect(() => {
-      if (props.score >= cardAmount.current) {
+      if (score >= cardAmount.current) {
          setIsWon(true);
       }
-   }, [props.score]);
+   }, [score]);
+
+   useEffect(() => {
+      setHighScore((prev) => (score > prev ? score : prev));
+   }, [score, setHighScore]);
 
    function handleScore(id) {
       if (clickedCards.includes(id)) {
          //Game reset on failure
          setClickedCards([]);
-         props.setScore(0);
+         setScore(0);
       } else {
          setClickedCards((prev) => [...prev, id]);
-         props.setScore((prev) => prev + 1);
+         setScore((prev) => prev + 1);
       }
       setDeck((prev) => randomizeDeck(prev));
    }
@@ -60,7 +65,7 @@ export function GameBoard(props) {
    function resetBoard() {
       setClickedCards([]);
       setIsWon(false);
-      props.setScore(0);
+      setScore(0);
    }
 
    return (
@@ -77,7 +82,7 @@ export function GameBoard(props) {
          {isWon && (
             <div className="game-over button-section">
                <button onClick={() => resetBoard()}>Reset</button>{" "}
-               <button onClick={() => [props.toggleButtons(), resetBoard()]}>
+               <button onClick={() => [toggleButtons(), resetBoard()]}>
                   Menu
                </button>
             </div>

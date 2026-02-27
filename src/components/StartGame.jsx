@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Header } from "./Header";
 import { GameBoard } from "./GameBoard";
 
 import "../styles/Buttons.css";
@@ -6,6 +7,7 @@ import "../styles/Buttons.css";
 export function StartGame() {
    const [cardAmount, setCardAmount] = useState(0);
    const [score, setScore] = useState(0);
+   const [highScore, setHighScore] = useState(0);
    const [startGame, setStartGame] = useState(false);
 
    function toggleButtons() {
@@ -14,7 +16,7 @@ export function StartGame() {
 
    return (
       <>
-         <p>Score: {score}</p>
+         <Header score={score} highScore={highScore}></Header>
          <div className="content">
             {!startGame && (
                <section className="difficulty-selection button-section">
@@ -35,6 +37,7 @@ export function StartGame() {
                   cardAmount={cardAmount}
                   score={score}
                   setScore={setScore}
+                  setHighScore={setHighScore}
                   toggleButtons={toggleButtons}
                ></GameBoard>
             )}

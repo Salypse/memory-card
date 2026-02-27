@@ -38,6 +38,7 @@ li {
 }
 
 p,
+h1,
 button {
    font-family: "DragonBall";
    color: var(--yellow);
