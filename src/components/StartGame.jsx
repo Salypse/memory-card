@@ -19,16 +19,28 @@ export function StartGame() {
          <Header score={score} highScore={highScore}></Header>
          <div className="content">
             {!startGame && (
-               <section className="difficulty-selection button-section">
-                  <button onClick={() => [toggleButtons(), setCardAmount(5)]}>
-                     Easy
-                  </button>
-                  <button onClick={() => [toggleButtons(), setCardAmount(10)]}>
-                     Medium
-                  </button>
-                  <button onClick={() => [toggleButtons(), setCardAmount(15)]}>
-                     Hard
-                  </button>
+               <section className="start-game">
+                  <p>
+                     HOW TO PLAY: TO SCORE A POINT CLICK A CHARACTER THAT YOU
+                     HAVE NOT PRESSED BEFORE
+                  </p>
+                  <div className="button-section">
+                     <button
+                        onClick={() => [toggleButtons(), setCardAmount(5)]}
+                     >
+                        Easy
+                     </button>
+                     <button
+                        onClick={() => [toggleButtons(), setCardAmount(10)]}
+                     >
+                        Medium
+                     </button>
+                     <button
+                        onClick={() => [toggleButtons(), setCardAmount(15)]}
+                     >
+                        Hard
+                     </button>
+                  </div>
                </section>
             )}
 

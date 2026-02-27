@@ -14,3 +14,13 @@
    text-align: right;
    font-size: clamp(1.2rem, 5vw, 1.6rem);
 }
+
+.start-game {
+   display: flex;
+   flex-direction: column;
+   place-self: center;
+   gap: 5vh;
+
+   font-size: clamp(1.8rem, 3vw, 2.2rem);
+   text-align: center;
+}
