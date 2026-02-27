@@ -8,6 +8,7 @@
 
 .game-board {
    width: 75%;
+   margin-top: 8vh;
    display: grid;
    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
    grid-gap: 3vw;
