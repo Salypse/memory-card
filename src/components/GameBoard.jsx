@@ -46,7 +46,11 @@ export function GameBoard(props) {
    }, [score]);
 
    useEffect(() => {
-      setHighScore((prev) => (score > prev ? score : prev));
+      setHighScore((prev) =>
+         score > prev
+            ? (localStorage.setItem("highScore", score), score)
+            : prev,
+      );
    }, [score, setHighScore]);
 
    function handleScore(id) {

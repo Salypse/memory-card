@@ -7,7 +7,9 @@ import "../styles/Buttons.css";
 export function StartGame() {
    const [cardAmount, setCardAmount] = useState(0);
    const [score, setScore] = useState(0);
-   const [highScore, setHighScore] = useState(0);
+   const [highScore, setHighScore] = useState(
+      localStorage.getItem("highScore") || 0,
+   );
    const [startGame, setStartGame] = useState(false);
 
    function toggleButtons() {
