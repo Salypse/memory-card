@@ -41,6 +41,18 @@ h1 {
    font-size: clamp(2rem, 4.5vw, 3.4rem);
 }
 
+button {
+   transition: transform 0.3s ease-out;
+}
+
+button:hover,
+button:focus-visible {
+   transform: scale(1.05);
+
+   outline: none;
+   box-shadow: 0 0 15px 10px var(--gray);
+}
+
 p,
 h1,
 button {

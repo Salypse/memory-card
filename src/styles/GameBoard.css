@@ -64,7 +64,7 @@
 @media (min-width: 1200px) {
    .game-board {
       grid-gap: 1vw;
-      margin-top: 6vh;
+      margin-top: 8vh;
    }
 
    .card,
