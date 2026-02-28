@@ -6,9 +6,20 @@
 }
 
 .button-section button {
-   font-size: clamp(2.5rem, 5vw, 2.8rem);
+   font-size: clamp(2.5rem, 5vw, 3.3rem);
    padding: 1vw 2vw;
    background-color: var(--orange);
    border: 1vw solid var(--dark-blue);
    border-radius: 5%;
+}
+
+@media (min-width: 1200px) {
+   .button-section {
+      gap: 1vw;
+   }
+
+   .button-section button {
+      padding: 0.5vw;
+      border-width: 0.8vw;
+   }
 }

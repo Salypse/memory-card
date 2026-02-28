@@ -38,5 +38,41 @@
    padding: 1vw 0;
    border-top: 2vw solid var(--dark-blue);
    background-color: var(--orange);
-   font-size: clamp(2rem, 5vw, 2.5rem);
+   font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+@media (min-width: 700px) {
+   .game-board {
+      grid-gap: 2vw;
+      margin-top: 5vh;
+   }
+
+   .card,
+   .card-text {
+      border-width: 1vw;
+   }
+
+   .card-image {
+      height: 35vh;
+   }
+
+   .card-text {
+      padding: 0.6vw 0;
+   }
+}
+
+@media (min-width: 1200px) {
+   .game-board {
+      grid-gap: 1vw;
+      margin-top: 6vh;
+   }
+
+   .card,
+   .card-text {
+      border-width: 0.8vw;
+   }
+
+   .card-text {
+      padding: 0.3vw 0;
+   }
 }
